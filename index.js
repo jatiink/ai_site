@@ -36,6 +36,9 @@ var vite_config_default = defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true
+  },
+  server: {
+    port: 3e3
   }
 });
 
@@ -149,8 +152,8 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
-  const PORT = 5e3;
+  const PORT = process.env.PORT || 3e3;
   server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT}`);
+    log(`Server running on port ${PORT}`);
   });
 })();
